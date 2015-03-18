@@ -2,8 +2,7 @@
 Find That Farm
 
 URL:  https://alee33.pythonanywhere.com/findthatfarm/
-
-by:   Allen Lee (alee33@ucsc.edu)
+<br>by:   Allen Lee (alee33@ucsc.edu)
 
 About:
   Find That Farm is a website with the purpose to let the consumers know:
