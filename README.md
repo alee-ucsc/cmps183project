@@ -1,8 +1,9 @@
 <div>
-  <b>cmps183project - Find That Farm<br></b>
+  <h1>cmps183project - Find That Farm<br></h1>
   <div>
-  <b>URL:</b>  https://alee33.pythonanywhere.com/findthatfarm/<br>
-  <b>by:</b>   Allen Lee (alee33@ucsc.edu)<br>
+    <p>
+    <b>URL:</b>  https://alee33.pythonanywhere.com/findthatfarm/<br>
+    <b>by:</b>   Allen Lee (alee33@ucsc.edu)<br></p>
   </div>
   <div>
   About:<br>
