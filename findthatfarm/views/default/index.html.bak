@@ -1,0 +1,71 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+<!-- This hides the "content" label of the form. -->
+<style>
+label#no_table_body__label { display: none; }
+</style>
+
+{{if title != 'Find That Farm':}}
+<div style="width:200px;height:5em;float:left;">
+    <h3>{{=A('Find That Farm', _href=URL('default', 'index'))}}</h3>
+</div>
+<div>
+    {{=FORM(TABLE(TR(TD(INPUT(_name='search', type='search', _placeholder="Search Farm")))),_action=URL('default', 'search'),_method='get')}}
+    <hr>
+</div>
+{{pass}}
+
+{{if title == 'Find That Farm':}}
+<div align="center">
+    <h1>{{=display_title}}</h1>
+    {{=FORM(TABLE(TR(TD(INPUT(_name='search', type='search', _placeholder="Search Farm")))),_action=URL('default', 'search'),_method='get')}}
+    {{=A('All Farms', _class='btn', _href=URL('default', 'all'))}}
+</div>
+
+{{elif page is None:}}
+<div>
+    <div id="header">
+        <h1>{{=display_title}}</h1>
+    </div>
+    {{=title}} is not in our DB.
+    <p>
+        {{=A('Add', _class='btn', _href=URL('default', 'edit', args=[title], vars=dict(edit='true')))}}
+        {{=A('All Farms', _class='btn', _href=URL('default', 'all'))}}
+    </p>
+</div>
+
+{{else:}}
+<div>
+    <h1>
+        {{=content.custom.widget.prf_image}}
+        {{=display_title}}
+    </h1>
+    <div id="farm-info">
+        <div id="farm-contact">
+            <ul id="contact">
+                <li>Address: {{=content.custom.inpval.address}}</li>
+                <li>Phone: {{=content.custom.inpval.phone}}</li>
+                <li>Email: {{=content.custom.inpval.email}}</li>
+            </ul>
+        </div>
+        <div id="farm_body">
+            <p><b>About us:</b></p>
+            <p>{{=content.custom.inpval.body}}</p>
+        </div>
+        <div id="products">
+            <h3>Products Offered:</h3>
+                <li>{{=content.custom.inpval.products}}</li>
+        </div>
+        <div id="locations">
+            <h3>Where to find us?</h3>
+                <li>{{=content.custom.inpval.locations}}</li>
+        </div>
+    </div>
+    {{=content.custom.widget.bkg_image}}
+    <p>
+        {{=A('Edit Farm', _class='btn', _href=URL('default', 'edit', args=[title], vars=dict(edit='true', title=title)))}}
+        {{=A('All Farms', _class='btn', _href=URL('default', 'all'))}}
+    </p>
+</div>
+{{pass}}

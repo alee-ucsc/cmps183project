@@ -1,0 +1,29 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+<div style="width:200px;height:5em;float:left;">
+    <h3>{{=A('Find That Farm', _href=URL('default', 'index'))}}</h3>
+</div>
+<div>
+    {{=FORM(TABLE(TR(TD(INPUT(_name='search', type='search', _placeholder="Search Farm")))),_action=URL('default', 'search'),_method='get')}}
+    <hr>
+</div>
+
+
+<h1>
+    Results related to {{=search_word}}
+</h1>
+{{if len(search_pages) > 0:}}
+<ul>
+{{for page in search_pages:}}
+   <li>
+       {{=A(page.title, _href=URL('default', 'index', args=page.title))}}
+{{pass}}
+
+{{else:}}
+{{=search_word}} is not in our DB.
+<p>
+    {{=A('Add', _class='btn', _href=URL('default', 'edit', args=[search_word], vars=dict(edit='true')))}}
+    {{=A('All Farms', _class='btn', _href=URL('default', 'all'))}}
+</p>
+{{pass}}
